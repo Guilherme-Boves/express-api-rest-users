@@ -1,3 +1,4 @@
+const { findById } = require("../models/User");
 const User = require("../models/User");
 
 class UserController {
@@ -53,7 +54,24 @@ class UserController {
         res.send("Ok");
     }
 
-    
+    async edit(req, res){
+        var {id, name, email, role} = req.body;
+
+        var result = await User.update(id, email, name, role);
+        if(result != undefined){
+            if(result.status){
+                res.status(200);
+                res.send("Tudo Ok!")
+            } else {
+                res.status(406);
+                res.send(result.err)
+            }
+        }else {
+            es.status(406);
+            res.send({err: "Ocorreu um erro no servidor!"})
+        }
+    }
+
 }
 
 module.exports = new UserController();
