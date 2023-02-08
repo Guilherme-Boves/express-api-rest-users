@@ -2,8 +2,6 @@ const knex = require("../database/connection");
 const bcrypt = require("bcrypt");
 const PasswordToken = require("./PasswordToken");
 
-const secret = "MinhaSenhaSecreta";
-
 class User {
 
     async findAll(){
