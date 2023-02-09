@@ -27,19 +27,19 @@ class UserController {
     async create(req, res){
         var {name, email, password} = req.body;
 
-        if(name == undefined || name == ""){
+        if(name == undefined || name == "" || name == ' '){
             res.status(400);
             res.json({err: "Nome inválido"});
             return;
         }
 
-        if(email == undefined || email == ""){
+        if(email == undefined || email == "" || email == ' '){
             res.status(400);
             res.json({err: "Email inválido"});
             return;
         }
 
-        if(password == undefined || password == ""){
+        if(password == undefined || password == "" || password == " "){
             res.status(400);
             res.json({err: "Senha inválida"});
             return;
@@ -144,12 +144,12 @@ class UserController {
                 
             } else {
                 res.status(400);
-                res.send("E-mail ou senha inválidos!");
+                res.json({err: "E-mail ou senha inválidos!"});
             }
 
         } else {
             res.status(400);
-            res.send("E-mail ou senha inválidos!");
+            res.json({err: "E-mail ou senha inválidos!"});
         }
     }
 }
