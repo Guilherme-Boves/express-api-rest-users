@@ -75,6 +75,20 @@ class User {
 
     async update(id, email, name, role){
 
+        if(name == '' || name == undefined){            
+            return {
+                status: false, 
+                err: "Nome inválido!"
+            }
+        }
+
+        if(email == '' || email == undefined){            
+            return {
+                status: false, 
+                err: "Email inválido!"
+            }
+        }
+
         var user = await this.findById(id);
 
         if(user != undefined){
